@@ -9,7 +9,7 @@ py::bytes encode_varint(const uint64_t value)
 {
     bc::data_chunk data(10);
     GoSlice slice = { data.data(), 10, 10 };
-    GoInt n = PutVarint(slice, 110);
+    GoInt n = PutVarint(slice, value);
     data.resize(n);
     return py::bytes(
         reinterpret_cast<const char*>(data.data()), data.size());
